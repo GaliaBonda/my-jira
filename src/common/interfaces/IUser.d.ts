@@ -10,4 +10,5 @@ export default interface IUser {
     phone: string;
     username: string;
     website: string;
+    color: string;
 }

@@ -23,10 +23,15 @@ function App(props: PropsType) {
   console.log(props.tickets);
   
   let ticketsList;
+  
   if (tickets && tickets.length > 0) {
     ticketsList = tickets.map((item) => {
+      
       return (
-        <li key={item.id}>{item.title} {item.status} {item.userName.name} {item.userName.surname}</li>
+        <li key={item.id}>
+          {item.title} {item.status} {item.userName.name} {item.userName.surname}
+          <div style={{width: '2em', height: '2em', display: 'inline-block', backgroundColor: item.color}}></div>
+        </li>
       );
     });
   }
