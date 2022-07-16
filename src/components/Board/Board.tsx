@@ -5,7 +5,6 @@ import './board.scss';
 
 type PropsType = {
     tickets: ITicket[] | undefined;
-    updateTicketStatus: (status: string) => void;
 };
 
 export default function Board(props: PropsType) {
@@ -14,7 +13,7 @@ export default function Board(props: PropsType) {
     let done: JSX.Element[] = [];
     if (props.tickets) props.tickets.forEach((item) => {
         let ticket = <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}
-            userName={item.userName} color={item.color} boardStatus={true} key={item.id} updateTicketStatus={props.updateTicketStatus} />;
+            userName={item.userName} color={item.color} boardStatus={true} key={item.id} />;
         if (item.status === 'todo') {
             todo.push(ticket);
         } else if (item.status === 'inprogress') {

@@ -1,20 +1,18 @@
 import React, { MouseEvent } from 'react';
 import ITicket from '../../common/interfaces/ITicket';
+import { updateTicketStatus } from '../../store/actions';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import './ticket.scss';
 
 type PropsType = ITicket & {
     boardStatus: boolean,
-    updateTicketStatus: (status: string) => void,
 };
 
 export default function Ticket(props: PropsType) {
 
     function handleClick(e: MouseEvent<HTMLDivElement>) {
-        e.preventDefault();
-        console.log('jj');
 
-        props.updateTicketStatus(props.status);
+        updateTicketStatus(props.status, props.id);
     }
 
     return (

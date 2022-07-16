@@ -2,17 +2,16 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ITicket from './common/interfaces/ITicket';
 import Board from './components/Board/Board';
-import Ticket from './components/TIcket/Ticket';
 import TicketList from './components/TicketList/TicketList';
 import { getTickets, updateTicketStatus } from './store/actions';
 
 type StateType = {
-  tickets: ITicket[];
+  tickets: ITicket[] | [];
 };
 type PropsType = {
-  tickets?: ITicket[];
+  tickets: ITicket[] | [];
   getTickets: () => Promise<void>;
-  updateTicketStatus: (status: string) => void;
+  // updateTicketStatus: (status: string) => void;
 };
 
 function App(props: PropsType) {
@@ -24,8 +23,8 @@ function App(props: PropsType) {
 
   return (
     <div className="App">
-      <TicketList tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
-      <Board tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
+      <TicketList tickets={props.tickets} />
+      <Board tickets={props.tickets} />
     </div>
   );
 }
@@ -35,4 +34,4 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 // export default App;
-export default connect(mapStateToProps, { getTickets, updateTicketStatus })(App);
+export default connect(mapStateToProps, { getTickets })(App);

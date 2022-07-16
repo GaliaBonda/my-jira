@@ -40,7 +40,8 @@ export const getTickets = () => async (dispatch: Dispatch) => {
 
 }
 
-export const updateTicketStatus = (status: string): void => {
+export const updateTicketStatus = (status: string, ticketId: number): void => {
+
     console.log(status);
-    // store.dispatch({ type: '' });
+    store.dispatch({ type: 'UPDATE_TICKET_STATUS', payload: { status: status, id: ticketId } });
 }
