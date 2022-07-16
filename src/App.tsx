@@ -1,46 +1,31 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ITicket from './common/interfaces/ITicket';
+import Board from './components/Board/Board';
 import Ticket from './components/TIcket/Ticket';
 import TicketList from './components/TicketList/TicketList';
-import { getTickets } from './store/actions';
-import store from './store/store';
+import { getTickets, updateTicketStatus } from './store/actions';
 
 type StateType = {
   tickets: ITicket[];
 };
 type PropsType = {
   tickets?: ITicket[];
+  getTickets: () => Promise<void>;
+  updateTicketStatus: (status: string) => void;
 };
 
 function App(props: PropsType) {
-  
+
   useEffect(() => {
-    getTickets();
-     
-   }, []);
-  
-  // let tickets: ITicket[] | undefined = props.tickets;
-  // console.log(props.tickets);
- 
-  
-  // let ticketsList;
-  
-  // if (tickets && tickets.length > 0) {
-  //   ticketsList = tickets.map((item) => {
-      
-  //     return (
-  //       <li key={item.id}>
-  //         <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}
-  //           userName={item.userName} color={item.color} boardStatus={false} />
-  //       </li>
-  //     );
-  //   });
-  // }
+    props.getTickets();
+
+  }, []);
+
   return (
     <div className="App">
-      <TicketList tickets={props.tickets}/>
-      
+      <TicketList tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
+      <Board tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
     </div>
   );
 }
@@ -50,4 +35,4 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 // export default App;
-export default connect(mapStateToProps, { getTickets })(App);
+export default connect(mapStateToProps, { getTickets, updateTicketStatus })(App);

@@ -1,0 +1,7 @@
+.board {
+    display: flex;
+    justify-content: space-between;
+    &__list {
+        flex: 0 0 25%;
+    }
+}

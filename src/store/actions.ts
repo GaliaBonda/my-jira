@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
-import api from '../api/request'
-import ITicket from '../common/interfaces/ITicket';
+import { Dispatch } from 'redux';
+import api from '../api/request';
 import ITodo from '../common/interfaces/ITodo';
 import IUser from '../common/interfaces/IUser';
 import store from './store';
 
-export async function getTickets() {
+export const getTickets = () => async (dispatch: Dispatch) => {
     try {
         const todos: AxiosResponse<ITodo[], any> = await api.get('/todos');
         const users: AxiosResponse<IUser[], any> = await api.get('/users');
@@ -30,7 +30,7 @@ export async function getTickets() {
             };
             return ticket;
         });
-        store.dispatch({ type: 'UPDATE_TICKETS', payload: tickets });
+        dispatch({ type: 'UPDATE_TICKETS', payload: tickets });
         console.log(todos);
         console.log(users);
     } catch (error) {
@@ -38,4 +38,9 @@ export async function getTickets() {
     }
 
 
+}
+
+export const updateTicketStatus = (status: string): void => {
+    console.log(status);
+    // store.dispatch({ type: '' });
 }

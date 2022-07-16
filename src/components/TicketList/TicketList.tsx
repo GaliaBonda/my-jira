@@ -5,6 +5,7 @@ import './ticketlist.scss'
 
 type PropsType = {
     tickets: ITicket[] | undefined;
+    updateTicketStatus: (status: string) => void;
 };
 
 export default function TicketList(props: PropsType) {
@@ -20,7 +21,7 @@ export default function TicketList(props: PropsType) {
             return (
                 <li key={item.id}>
                     <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}
-                        userName={item.userName} color={item.color} boardStatus={false} />
+                        userName={item.userName} color={item.color} boardStatus={false} updateTicketStatus={props.updateTicketStatus} />
                 </li>
             );
         });
