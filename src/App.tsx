@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { updatePartiallyEmittedExpression } from 'typescript';
 import ITicket from './common/interfaces/ITicket';
+import Ticket from './components/TIcket/Ticket';
+import TicketList from './components/TicketList/TicketList';
 import { getTickets } from './store/actions';
 import store from './store/store';
 
@@ -18,28 +19,28 @@ function App(props: PropsType) {
     getTickets();
      
    }, []);
-  // console.log(store.getState());
-  let tickets: ITicket[] | undefined = props.tickets;
-  console.log(props.tickets);
   
-  let ticketsList;
+  // let tickets: ITicket[] | undefined = props.tickets;
+  // console.log(props.tickets);
+ 
   
-  if (tickets && tickets.length > 0) {
-    ticketsList = tickets.map((item) => {
+  // let ticketsList;
+  
+  // if (tickets && tickets.length > 0) {
+  //   ticketsList = tickets.map((item) => {
       
-      return (
-        <li key={item.id}>
-          {item.title} {item.status} {item.userName.name} {item.userName.surname}
-          <div style={{width: '2em', height: '2em', display: 'inline-block', backgroundColor: item.color}}></div>
-        </li>
-      );
-    });
-  }
+  //     return (
+  //       <li key={item.id}>
+  //         <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}
+  //           userName={item.userName} color={item.color} boardStatus={false} />
+  //       </li>
+  //     );
+  //   });
+  // }
   return (
     <div className="App">
-      <ul>
-          {ticketsList}
-        </ul>
+      <TicketList tickets={props.tickets}/>
+      
     </div>
   );
 }

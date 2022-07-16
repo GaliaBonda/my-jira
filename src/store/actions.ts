@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import api from '../api/request'
+import ITicket from '../common/interfaces/ITicket';
 import ITodo from '../common/interfaces/ITodo';
 import IUser from '../common/interfaces/IUser';
 import store from './store';

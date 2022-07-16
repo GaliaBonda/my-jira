@@ -7,9 +7,11 @@
 //     user: userReducer,
 // });
 
-const initialState = {tickets: []};
+const initialState = {
+    tickets: []
+};
 
-export default function reducer(state = initialState, action: {type: string, payload?: any}) {
+export default function reducer(state = initialState, action: { type: string, payload?: any }) {
     switch (action.type) {
         case 'UPDATE_TICKETS':
             return {
@@ -17,7 +19,7 @@ export default function reducer(state = initialState, action: {type: string, pay
                 tickets: action.payload,
             };
         default: {
-            return {...state};
+            return { ...state };
         }
     }
 }
