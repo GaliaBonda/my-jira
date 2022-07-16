@@ -1,6 +1,11 @@
 export default interface ITicket {
-    completed: boolean;
+    // completed: boolean;
     id: number;
+    status: string;
     title: string;
     userId: number;
+    userName: {
+        name: string;
+        surname: string;
+    };
  };
