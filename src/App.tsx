@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ITicket from './common/interfaces/ITicket';
+import { getTickets } from './store/actions';
+import store from './store/store';
+
+type StateType = {
+  tickets: ITicket[];
+};
 
 function App() {
+  
+  useEffect(() => {
+    getTickets();
+     
+   }, []);
+  console.log(store.getState());
+  let tickets: ITicket[] = store.getState().tickets;
+  let ticketsList;
+  if (tickets && tickets.length > 0) {
+    ticketsList = tickets.map((item) => {
+      return (
+        <li key={item.id}>{item.title}</li>
+      );
+    });
+  }
   return (
     <div className="App">
-      <header className="App-header">
-      
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+          {ticketsList}
+        </ul>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state: StateType) => ({
+  ...state.tickets,
+});
+
+// export default App;
+export default connect(mapStateToProps, { getTickets })(App);
