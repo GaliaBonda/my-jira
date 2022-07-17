@@ -47,10 +47,11 @@ export default function Board(props: PropsType) {
                     <h3 className="board__subtitle">Done</h3>
                     {done}
                 </ul>
+                {(shownTicketsNum < props.tickets.length) && <button className="app-btn board__btn"
+                    onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
             </div>
 
-            {(shownTicketsNum < props.tickets.length) && <button className="app-btn board__btn"
-                onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
+
         </div>
     );
 }

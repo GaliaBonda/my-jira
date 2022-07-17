@@ -1,18 +1,45 @@
 @import '../../app.scss';
 
-.board__inner {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 3em;
-    position: relative;
-    border: $border;
-    border-radius: 15px;
-    &__list {
-        flex: 0 0 25%;
+.board {
+    &__inner {
+        display: flex;
+
+
+        position: relative;
+        border: $border;
+        border-radius: 15px;
+        padding: 2.5em 0.25em;
+        padding-bottom: calc(2.5em + 4.5em);
     }
+
+    &__list {
+        flex: 0 1 calc(100% - 6px / 3);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25em;
+        padding: 0 2.25em;
+    }
+
+    &__list+.board__list {
+        border-left: 1px solid $lightborder;
+
+    }
+
+    &__title {
+        margin-bottom: 0.667em;
+        font-size: 3.75em;
+    }
+
+    &__subtitle {
+        font-size: 3em;
+        text-align: center;
+    }
+
     &__btn {
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: 1em;
+        left: 50%;
+        transform: translateX(-50%);
     }
+
 }
