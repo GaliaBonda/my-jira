@@ -10,7 +10,7 @@ type PropsType = {
 
 export default function TicketList(props: PropsType) {
     let tickets: ITicket[] = props.tickets;
-    const [shownTicketsNum, setshownTicketsNum] = useState(10);
+    const [shownTicketsNum, setshownTicketsNum] = useState(5);
     console.log(props.tickets);
 
 
@@ -35,7 +35,8 @@ export default function TicketList(props: PropsType) {
             <ul className="ticket-list__list">
                 {ticketsList}
             </ul>
-            <button className="app-btn ticket-list__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
+            {(shownTicketsNum < props.tickets.length) && <button className="app-btn ticket-list__btn"
+                onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
         </div>
     );
 }

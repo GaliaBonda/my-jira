@@ -2,6 +2,8 @@ $border: 1px solid #111111;
 $lightborder: #333333;
 $fontcolor: #000000;
 $avatarfont: #FFFFFF;
+$btncolor: #FFFFFF;
+$shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
 
 body {
     margin: 0;
@@ -32,7 +34,15 @@ ul {
 }
 
 .app-btn {
-    border: $border;
-    background-color: none;
-    border-radius: 15px;
+    border: 1px solid transparent;
+    background-color: $btncolor;
+    border-radius: 10px;
+    padding: 1em;
+    cursor: pointer;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    &:hover {
+        box-shadow: $shadow;
+        border: $border;
+    }
 }

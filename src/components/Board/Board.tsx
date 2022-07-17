@@ -49,7 +49,8 @@ export default function Board(props: PropsType) {
                 </ul>
             </div>
 
-            <button className="app-btn board__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
+            {(shownTicketsNum < props.tickets.length) && <button className="app-btn board__btn"
+                onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
         </div>
     );
 }

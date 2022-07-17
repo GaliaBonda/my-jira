@@ -4,9 +4,19 @@
     border: $border;
     border-radius: 15px;
     padding: 2.5em;
+    margin-bottom: 3.75em;
+    &__title {
+        margin-bottom: 1.25em;
+        
+    }
     &__list {
         display: flex;
     flex-direction: column;
     gap: 1.25em;
+    margin-bottom: 1.25em;
+    }
+    &__btn {
+        display: block;
+        margin: 0 auto;
     }
 }

@@ -6,7 +6,12 @@
     display: flex;
     gap: 1.25em;
     justify-content: space-between;
+    align-items: center;
     padding: 1.25em 2.188em 2.125em 2.188em;
+    &:hover {
+        box-shadow: $shadow;
+        cursor: pointer;
+    }
     &__title {
         flex: 1 1 auto;
         font-size: 1.125em;
