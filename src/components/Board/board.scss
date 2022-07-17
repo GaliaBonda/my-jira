@@ -1,7 +1,14 @@
 .board {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 3em;
+    position: relative;
     &__list {
         flex: 0 0 25%;
+    }
+    &__btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
 }

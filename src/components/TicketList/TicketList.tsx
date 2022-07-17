@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ITicket from '../../common/interfaces/ITicket';
 import Ticket from '../TIcket/Ticket';
 import './ticketlist.scss'
 
 type PropsType = {
-    tickets: ITicket[] | [];
+    tickets: ITicket[];
+    updateTicketStatus: (status: string, id: number) => void;
 };
 
 export default function TicketList(props: PropsType) {
-    let tickets: ITicket[] | undefined = props.tickets;
+    let tickets: ITicket[] = props.tickets;
+    const [shownTicketsNum, setshownTicketsNum] = useState(10);
     console.log(props.tickets);
 
 
     let ticketsList;
 
     if (tickets && tickets.length > 0) {
-        ticketsList = tickets.map((item) => {
+        ticketsList = tickets.map((item, index) => {
 
             return (
-                <li key={item.id}>
+                <li key={item.id}
+                    style={index <= shownTicketsNum ? { display: 'block' } : { display: 'none' }}>
                     <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}
-                        userName={item.userName} color={item.color} boardStatus={false} />
+                        userName={item.userName} color={item.color} boardStatus={false}
+                        updateTicketStatus={props.updateTicketStatus} />
                 </li>
             );
         });
@@ -30,6 +34,7 @@ export default function TicketList(props: PropsType) {
             <ul className="ticket-list__list">
                 {ticketsList}
             </ul>
+            <button className="ticket-list__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
         </div>
     );
 }

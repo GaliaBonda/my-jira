@@ -5,18 +5,19 @@ import UserAvatar from '../UserAvatar/UserAvatar';
 import './ticket.scss';
 
 type PropsType = ITicket & {
-    boardStatus: boolean,
+    boardStatus: boolean;
+    updateTicketStatus: (status: string, id: number) => void;
 };
 
 export default function Ticket(props: PropsType) {
 
     function handleClick(e: MouseEvent<HTMLDivElement>) {
 
-        updateTicketStatus(props.status, props.id);
+        props.updateTicketStatus(props.status, props.id);
     }
 
     return (
-        <div className='ticket' onClick={handleClick}>
+        <div className='ticket' onClick={handleClick} >
             <UserAvatar color={props.color} userName={props.userName.name} userSurname={props.userName.surname} />
             <h3 className="ticket__title">{props.title}</h3>
             {!props.boardStatus && <p className="ticket__status">{props.status}</p>}

@@ -6,12 +6,12 @@ import TicketList from './components/TicketList/TicketList';
 import { getTickets, updateTicketStatus } from './store/actions';
 
 type StateType = {
-  tickets: ITicket[] | [];
+  tickets: ITicket[];
 };
 type PropsType = {
-  tickets: ITicket[] | [];
+  tickets: ITicket[];
   getTickets: () => Promise<void>;
-  // updateTicketStatus: (status: string) => void;
+  updateTicketStatus: (status: string, id: number) => void
 };
 
 function App(props: PropsType) {
@@ -23,8 +23,10 @@ function App(props: PropsType) {
 
   return (
     <div className="App">
-      <TicketList tickets={props.tickets} />
-      <Board tickets={props.tickets} />
+      <TicketList tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
+
+      <Board tickets={props.tickets} updateTicketStatus={props.updateTicketStatus} />
+
     </div>
   );
 }
@@ -34,4 +36,4 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 // export default App;
-export default connect(mapStateToProps, { getTickets })(App);
+export default connect(mapStateToProps, { getTickets, updateTicketStatus })(App);
