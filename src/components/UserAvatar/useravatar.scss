@@ -1,0 +1,18 @@
+@import '../../app.scss';
+
+.avatar {
+    width: 5.625em;
+        height: 5.625em;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        text-align: center;
+        &__text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: $avatarfont;
+            font-size: 2.25em;
+            
+        }
+}

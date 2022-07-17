@@ -31,10 +31,11 @@ export default function TicketList(props: PropsType) {
     }
     return (
         <div className="ticket-list">
+            <h2 className='ticket-list__title'>Ticket list</h2>
             <ul className="ticket-list__list">
                 {ticketsList}
             </ul>
-            <button className="ticket-list__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
+            <button className="app-btn ticket-list__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
         </div>
     );
 }

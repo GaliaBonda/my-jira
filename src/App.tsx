@@ -4,6 +4,7 @@ import ITicket from './common/interfaces/ITicket';
 import Board from './components/Board/Board';
 import TicketList from './components/TicketList/TicketList';
 import { getTickets, updateTicketStatus } from './store/actions';
+import './app.scss';
 
 type StateType = {
   tickets: ITicket[];

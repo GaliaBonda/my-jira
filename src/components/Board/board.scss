@@ -1,8 +1,12 @@
-.board {
+@import '../../app.scss';
+
+.board__inner {
     display: flex;
     justify-content: space-between;
     padding-bottom: 3em;
     position: relative;
+    border: $border;
+    border-radius: 15px;
     &__list {
         flex: 0 0 25%;
     }

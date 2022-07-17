@@ -19,7 +19,7 @@ export const getTickets = () => async (dispatch: Dispatch) => {
             });
             let ticket = {
                 id: item.id,
-                status: item.completed ? 'done' : 'todo', //todo at the beginning! 
+                status: item.completed ? 'done' : 'to do', //todo at the beginning! 
                 title: item.title,
                 userId: item.userId,
                 userName: {

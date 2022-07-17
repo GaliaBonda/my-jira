@@ -1,5 +1,12 @@
+@import '../../app.scss';
+
 .ticket-list {
+    border: $border;
+    border-radius: 15px;
+    padding: 2.5em;
     &__list {
-        list-style-type: none;
+        display: flex;
+    flex-direction: column;
+    gap: 1.25em;
     }
 }

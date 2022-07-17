@@ -19,7 +19,7 @@ export default function Ticket(props: PropsType) {
     return (
         <div className='ticket' onClick={handleClick} >
             <UserAvatar color={props.color} userName={props.userName.name} userSurname={props.userName.surname} />
-            <h3 className="ticket__title">{props.title}</h3>
+            <h4 className="ticket__title">{props.title}</h4>
             {!props.boardStatus && <p className="ticket__status">{props.status}</p>}
         </div>
     );

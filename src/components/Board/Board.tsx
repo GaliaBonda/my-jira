@@ -22,9 +22,9 @@ export default function Board(props: PropsType) {
                 userName={item.userName} color={item.color} boardStatus={true}
                 updateTicketStatus={props.updateTicketStatus} /></li>;
 
-        if (item.status === 'todo') {
+        if (item.status === 'to do') {
             todo.push(ticket);
-        } else if (item.status === 'inprogress') {
+        } else if (item.status === 'in progress') {
             inprogress.push(ticket);
         } else if (item.status === 'done') {
             done.push(ticket);
@@ -33,19 +33,23 @@ export default function Board(props: PropsType) {
 
     return (
         <div className="board">
-            <ul className="board__list todo-list">
-                <h2>To do</h2>
-                {todo}
-            </ul>
-            <ul className="board__list inprogress-list">
-                <h2>In progress</h2>
-                {inprogress}
-            </ul>
-            <ul className="board__list done-list">
-                <h2>Done</h2>
-                {done}
-            </ul>
-            <button className="board__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
+            <h2 className="board__title">Board</h2>
+            <div className="board__inner">
+                <ul className="board__list todo-list">
+                    <h3 className="board__subtitle">To do</h3>
+                    {todo}
+                </ul>
+                <ul className="board__list inprogress-list">
+                    <h3 className="board__subtitle">In progress</h3>
+                    {inprogress}
+                </ul>
+                <ul className="board__list done-list">
+                    <h3 className="board__subtitle">Done</h3>
+                    {done}
+                </ul>
+            </div>
+
+            <button className="app-btn board__btn" onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>
         </div>
     );
 }

@@ -1,0 +1,38 @@
+$border: 1px solid #111111;
+$lightborder: #333333;
+$fontcolor: #000000;
+$avatarfont: #FFFFFF;
+
+body {
+    margin: 0;
+    padding: 1em;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  transition-duration: 300ms;
+}
+
+body, button {
+    font-family: Roboto;
+    font-size: 1rem;
+    color: $fontcolor;
+    line-height: 1.5;
+}
+
+ul, p, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.app-btn {
+    border: $border;
+    background-color: none;
+    border-radius: 15px;
+}

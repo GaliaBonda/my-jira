@@ -28,8 +28,8 @@ export default function reducer(state = initialState, action: { type: string, pa
 
             let updatedTickets: ITicket[] = state.tickets.map((item: ITicket) => {
                 if (item.id === action.payload.id) {
-                    return action.payload.status === 'todo' ?
-                        { ...item, status: 'inprogress' } : { ...item, status: 'done' };
+                    return action.payload.status === 'to do' ?
+                        { ...item, status: 'in progress' } : { ...item, status: 'done' };
                 } else return item;
             });
 

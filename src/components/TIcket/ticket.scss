@@ -1,14 +1,20 @@
+@import '../../app.scss';
+
 .ticket {
-    border: 2px solid black;
+    border: 1px solid $lightborder;
+    border-radius: 15px;
     display: flex;
+    gap: 1.25em;
+    justify-content: space-between;
+    padding: 1.25em 2.188em 2.125em 2.188em;
     &__title {
-        flex: 1 1 auto; 
+        flex: 1 1 auto;
+        font-size: 1.125em;
     }
-    &__avatar {
-        width: 2em;
-         height: 2em;
-         border-radius: 50%;
-         display: inline-block;
-         text-align: center;
+
+    &__status {
+        font-size: 1.5em;
+        flex: 0 1 7.5em;
+        text-align: right;
     }
 }
