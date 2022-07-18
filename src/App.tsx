@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import ITicket from './common/interfaces/ITicket';
 import Board from './components/Board/Board';
 import TicketList from './components/TicketList/TicketList';
-import { getTickets, updateTicketStatus } from './store/actions';
+import { thunkGetTickets } from './store/actions';
 import './app.scss';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Dispatch } from 'redux';
@@ -13,7 +13,7 @@ type StateType = {
 };
 type PropsType = {
   tickets: ITicket[];
-  getTickets: () => ThunkAction<Promise<void>, any, any, any>;
+  getTickets: () => Promise<void>;
   updateTicketStatus: (status: string, id: number) => void
 };
 
@@ -23,9 +23,9 @@ function App(props: PropsType) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // props.getTickets();
+    props.getTickets();
 
-    dispatch(getTickets());
+    // dispatch(getTickets());
 
   }, []);
 
@@ -43,11 +43,13 @@ const mapStateToProps = (state: StateType) => ({
   tickets: state.tickets,
 });
 
-const mapDispatchToProps = () => {
-  return { getTickets, updateTicketStatus };
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any> & Dispatch) => {
+  return {
+    getTickets: () => dispatch(thunkGetTickets()),
+    updateTicketStatus: (status: string, ticketId: number) => dispatch({ type: 'UPDATE_TICKET_STATUS', payload: { status: status, id: ticketId } })
+  };
 };
 
 
 
-// export default App;
 export default connect(mapStateToProps, mapDispatchToProps)(App);

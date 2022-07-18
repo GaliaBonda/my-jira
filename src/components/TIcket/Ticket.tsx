@@ -2,7 +2,7 @@ import React, { MouseEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import ITicket from '../../common/interfaces/ITicket';
-import { updateTicketStatus } from '../../store/actions';
+
 import UserAvatar from '../UserAvatar/UserAvatar';
 import './ticket.scss';
 
@@ -16,8 +16,8 @@ export default function Ticket(props: PropsType) {
     const dispatch = useAppDispatch();
     function handleClick() {
 
-
-        dispatch(props.updateTicketStatus(props.status, props.id));
+        props.updateTicketStatus(props.status, props.id)
+        // dispatch(props.updateTicketStatus(props.status, props.id));
     }
 
     return (
