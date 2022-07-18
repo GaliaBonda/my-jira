@@ -1,24 +1,31 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import ITicket from './common/interfaces/ITicket';
 import Board from './components/Board/Board';
 import TicketList from './components/TicketList/TicketList';
 import { getTickets, updateTicketStatus } from './store/actions';
 import './app.scss';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 type StateType = {
   tickets: ITicket[];
 };
 type PropsType = {
   tickets: ITicket[];
-  getTickets: () => Promise<void>;
+  getTickets: () => ThunkAction<Promise<void>, any, any, any>;
   updateTicketStatus: (status: string, id: number) => void
 };
 
 function App(props: PropsType) {
 
+  const useAppDispatch: () => ThunkDispatch<{}, {}, any> = useDispatch;
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    props.getTickets();
+    // props.getTickets();
+
+    dispatch(getTickets());
 
   }, []);
 
@@ -36,5 +43,11 @@ const mapStateToProps = (state: StateType) => ({
   tickets: state.tickets,
 });
 
+const mapDispatchToProps = () => {
+  return { getTickets, updateTicketStatus };
+};
+
+
+
 // export default App;
-export default connect(mapStateToProps, { getTickets, updateTicketStatus })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

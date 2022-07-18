@@ -1,4 +1,6 @@
 import React, { MouseEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 import ITicket from '../../common/interfaces/ITicket';
 import { updateTicketStatus } from '../../store/actions';
 import UserAvatar from '../UserAvatar/UserAvatar';
@@ -10,10 +12,12 @@ type PropsType = ITicket & {
 };
 
 export default function Ticket(props: PropsType) {
+    const useAppDispatch: () => ThunkDispatch<{}, {}, any> = useDispatch;
+    const dispatch = useAppDispatch();
+    function handleClick() {
 
-    function handleClick(e: MouseEvent<HTMLDivElement>) {
 
-        props.updateTicketStatus(props.status, props.id);
+        dispatch(props.updateTicketStatus(props.status, props.id));
     }
 
     return (
