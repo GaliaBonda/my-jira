@@ -23,8 +23,8 @@ export default function TicketList(props: Props) {
                     </li>
                 ))}
             </ul>
-            {(shownTicketsNum < props.tickets.length) && <button className="app-btn ticket-list__btn"
-                onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
+            {(shownTicketsNum < tickets.length) && <button className="app-btn ticket-list__btn"
+                onClick={() => setshownTicketsNum(tickets.length)} >Show all...</button>}
         </div>
     );
 }

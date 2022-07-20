@@ -37,7 +37,3 @@ export const thunkGetTickets = () => async (dispatch: Dispatch) => {
         console.error(error);
     }
 }
-
-// export const updateTicketStatus = (status: string, ticketId: number) => (dispatch: Dispatch) => {
-//     dispatch({ type: 'UPDATE_TICKET_STATUS', payload: { status: status, id: ticketId } });
-// }

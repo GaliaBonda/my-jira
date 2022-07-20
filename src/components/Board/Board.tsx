@@ -42,8 +42,8 @@ export default function Board(props: Props) {
                                 userName={item.userName} color={item.color} boardStatus={true} /></li>);
                     })}
                 </ul>
-                {(shownTicketsNum < props.tickets.length) && <button className="app-btn board__btn"
-                    onClick={() => setshownTicketsNum(props.tickets.length)} >Show all...</button>}
+                {(shownTicketsNum < tickets.length) && <button className="app-btn board__btn"
+                    onClick={() => setshownTicketsNum(tickets.length)} >Show all...</button>}
             </div>
         </div>
     );
