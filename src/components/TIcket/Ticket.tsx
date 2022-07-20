@@ -1,30 +1,36 @@
-import React, { MouseEvent } from 'react';
-import { useDispatch } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import ITicket from '../../common/interfaces/ITicket';
 
 import UserAvatar from '../UserAvatar/UserAvatar';
 import './ticket.scss';
 
-type PropsType = ITicket & {
+interface Props extends ITicket {
     boardStatus: boolean;
     updateTicketStatus: (status: string, id: number) => void;
 };
 
-export default function Ticket(props: PropsType) {
-    const useAppDispatch: () => ThunkDispatch<{}, {}, any> = useDispatch;
-    const dispatch = useAppDispatch();
+function Ticket(props: Props) {
+    const { title, status, id, color, userName, boardStatus, updateTicketStatus } = props;
     function handleClick() {
-
-        props.updateTicketStatus(props.status, props.id)
-        // dispatch(props.updateTicketStatus(props.status, props.id));
+        updateTicketStatus(status, id)
     }
 
     return (
         <div className='ticket' onClick={handleClick} >
-            <UserAvatar color={props.color} userName={props.userName.name} userSurname={props.userName.surname} />
-            <h4 className="ticket__title">{props.title}</h4>
-            {!props.boardStatus && <p className="ticket__status">{props.status}</p>}
+            <UserAvatar color={color} userName={userName.name} userSurname={userName.surname} />
+            <h4 className="ticket__title">{title}</h4>
+            {!boardStatus && <p className="ticket__status">{status}</p>}
         </div>
     );
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        updateTicketStatus: (status: string, ticketId: number) =>
+            dispatch({ type: 'UPDATE_TICKET_STATUS', payload: { status, id: ticketId } })
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Ticket);
