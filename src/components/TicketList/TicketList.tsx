@@ -11,11 +11,19 @@ export default function TicketList(props: Props) {
     const { tickets } = props;
     const [shownTicketsNum, setshownTicketsNum] = useState(5);
 
+    const sortedTickets = [...tickets]?.sort((ticket1, ticket2) => {
+        if (ticket1.status === 'to do') return -1;
+        if (ticket1.status === 'done') return 1;
+        if (ticket1.status === 'in progress' && ticket2.status === 'done') return -1;
+        if (ticket1.status === 'in progress' && ticket2.status === 'to do') return 1;
+        return 0;
+    });
+
     return (
         <div className="ticket-list">
             <h2 className='ticket-list__title'>Ticket list</h2>
             <ul className="ticket-list__list">
-                {tickets?.length > 0 && tickets.map((item, index) => (
+                {sortedTickets.map((item, index) => (
                     <li key={item.id}
                         style={index <= shownTicketsNum ? { display: 'block' } : { display: 'none' }}>
                         <Ticket title={item.title} id={item.id} status={item.status} userId={item.userId}

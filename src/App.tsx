@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 import ITicket from './common/interfaces/ITicket';
 import Board from './components/Board/Board';
 import TicketList from './components/TicketList/TicketList';
 import { thunkGetTickets } from './store/actions';
 import './app.scss';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 
-type StateType = {
+
+interface State {
   tickets: ITicket[];
 };
-type PropsType = {
+interface Props {
   tickets: ITicket[];
   getTickets: () => Promise<void>;
 };
 
-function App(props: PropsType) {
+function App(props: Props) {
   const { tickets, getTickets } = props;
   useEffect(() => {
     getTickets();
@@ -26,12 +27,11 @@ function App(props: PropsType) {
     <div className="App">
       <TicketList tickets={tickets} />
       <Board tickets={tickets} />
-
     </div>
   );
 }
 
-const mapStateToProps = (state: StateType) => ({
+const mapStateToProps = (state: State) => ({
   tickets: state.tickets,
 });
 

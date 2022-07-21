@@ -3,7 +3,7 @@ import ITicket from '../../common/interfaces/ITicket';
 import Ticket from '../TIcket/Ticket';
 import './board.scss';
 
-type Props = {
+interface Props {
     tickets: ITicket[];
 };
 
